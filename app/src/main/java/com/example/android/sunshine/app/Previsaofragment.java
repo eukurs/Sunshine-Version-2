@@ -4,6 +4,7 @@ package com.example.android.sunshine.app;
  * Created by caio on 20/10/2015.
  */
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -78,7 +79,10 @@ public class Previsaofragment extends Fragment
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(),adapter.getItem(position),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), adapter.getItem(position), Toast.LENGTH_SHORT).show();
+                Intent detailtIntent = new Intent(getActivity(), DetailActivity.class);
+                detailtIntent.putExtra("StringDetail", adapter.getItem(position));
+                startActivity(detailtIntent);
             }
         });
 
@@ -103,6 +107,10 @@ public class Previsaofragment extends Fragment
             PegaPrevisaoTask previsaoTask1= new PegaPrevisaoTask();
             //previsaoTask1.execute("http://api.openweathermap.org/data/2.5/forecast/daily?id=2270968&mode=json&units=metric&cnt=7&APPID=e71891c74c107a46e8fabab52d68fd71");
             previsaoTask1.execute("Belo Horizonte,br","e71891c74c107a46e8fabab52d68fd71");
+            return true;
+        }else if (id==R.id.action_settings){
+            Intent settingsintent=new Intent(getActivity(), SettingsActivity.class);
+            startActivity(settingsintent);
             return true;
         }
         return super.onOptionsItemSelected(item);
