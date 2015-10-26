@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference android:title="Localização"
+        android:key="@string/pref_location_key"
+        android:inputType="text"
+        android:singleLine="true"
+        android:defaultValue="Belo Horizonte, br">
+    </EditTextPreference>
+    <ListPreference android:title="Unidade de temperatura"
+        android:key="@string/pref_temptype_key"
+        android:entries="@array/unidadetemperatura"
+        android:entryValues="@array/unidadetemperatura"
+        android:defaultValue="Celsius"
+        />
+</PreferenceScreen>

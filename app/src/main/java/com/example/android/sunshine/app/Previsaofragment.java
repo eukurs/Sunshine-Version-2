@@ -55,7 +55,7 @@ public class Previsaofragment extends Fragment
     }
 
     private final String LOG_TAG= this.getClass().getSimpleName();
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
