@@ -5,9 +5,13 @@ package com.example.android.sunshine.app;
  */
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.text.format.Time;
 import android.util.Log;
@@ -36,32 +40,27 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.prefs.Preferences;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class Previsaofragment extends Fragment
 {
-
-    String[] data={
-            "Mon 6/23 - Sunny - 31/17",
-            "Tue 6/24 - Foggy - 21/8",
-            "Wed 6/25 - Cloudy - 22/17",
-            "Thurs 6/26 - Rainy - 18/11",
-            "Fri 6/27 - Foggy - 21/10",
-            "Sat 6/28 - TRAPPED IN WEATHERSTATION - 23/18",
-            "Sun 6/29 - Sunny - 20/7"
-    };
+    String SHARED_PREF_NAME="SunshinePref";
+    String[] data={};
     List<String> weekForecast;
     ArrayAdapter<String> adapter;
     public Previsaofragment() {
     }
 
+    private final String LOG_TAG= this.getClass().getSimpleName();
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+
     }
 
 
@@ -91,6 +90,13 @@ public class Previsaofragment extends Fragment
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        atualizaTela();
+
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
         inflater.inflate(R.menu.previsaofragment, menu);
@@ -104,9 +110,8 @@ public class Previsaofragment extends Fragment
 
         if(id==R.id.action_refresh)
         {
-            PegaPrevisaoTask previsaoTask1= new PegaPrevisaoTask();
-            //previsaoTask1.execute("http://api.openweathermap.org/data/2.5/forecast/daily?id=2270968&mode=json&units=metric&cnt=7&APPID=e71891c74c107a46e8fabab52d68fd71");
-            previsaoTask1.execute("Belo Horizonte,br","e71891c74c107a46e8fabab52d68fd71");
+            //funciona
+            atualizaTela();
             return true;
         }else if (id==R.id.action_settings){
             Intent settingsintent=new Intent(getActivity(), SettingsActivity.class);
@@ -114,6 +119,17 @@ public class Previsaofragment extends Fragment
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void atualizaTela() {
+        SharedPreferences opt= PreferenceManager.getDefaultSharedPreferences(getActivity());
+        //Log.v(LOG_TAG, );
+        //SharedPreferences opt= PreferenceManager.getDefaultSharedPreferences
+        String temptype= opt.getString(getString(R.string.pref_temptype_key),"Celsius");
+
+        PegaPrevisaoTask previsaoTask1= new PegaPrevisaoTask();
+        //previsaoTask1.execute("http://api.openweathermap.org/data/2.5/forecast/daily?id=2270968&mode=json&units=metric&cnt=7&APPID=e71891c74c107a46e8fabab52d68fd71");
+        previsaoTask1.execute(opt.getString(getString(R.string.pref_location_key), "Contagem,br"),"e71891c74c107a46e8fabab52d68fd71");
     }
 
 
@@ -163,7 +179,7 @@ public class Previsaofragment extends Fragment
                         .build();
 
                 URL url = new URL(builtUri.toString());
-                //Log.v(LOG_TAG, "Built URI " + builtUri.toString());
+                Log.v(LOG_TAG, "Built URI " + builtUri.toString());
                 // Create the request to OpenWeatherMap, and open the connection
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
@@ -264,11 +280,24 @@ public class Previsaofragment extends Fragment
      */
     private String formatHighLows(double high, double low) {
         // For presentation, assume the user doesn't care about tenths of a degree.
+        SharedPreferences opt= PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String temptype= opt.getString(getString(R.string.pref_temptype_key), "Celsius");
+
+        if (temptype.charAt(0)=='C')
+        {
+
+        }else if (temptype.charAt(0)=='F')
+        {
+            high=(high*1.8)+32;
+            low=(low*1.8)+32;
+
+        }
         long roundedHigh = Math.round(high);
         long roundedLow = Math.round(low);
-
-        String highLowStr = roundedHigh + "/" + roundedLow;
-        return highLowStr;
+        //return "Erro no calculo de temp";
+        //String highLowStr = roundedHigh + "/" + roundedLow;
+        //return highLowStr;
+        return roundedHigh + "/" + roundedLow;
     }
 
     /**

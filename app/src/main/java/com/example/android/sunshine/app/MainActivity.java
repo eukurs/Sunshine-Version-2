@@ -1,6 +1,9 @@
 package com.example.android.sunshine.app;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -26,6 +29,8 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
+    private final String LOG_TAG= this.getClass().getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +40,7 @@ public class MainActivity extends ActionBarActivity {
                     .add(R.id.container, new Previsaofragment())
                     .commit();
         }
+        SharedPreferences opt= getSharedPreferences("",0);
     }
 
     @Override
@@ -57,8 +63,28 @@ public class MainActivity extends ActionBarActivity {
             startActivity(settingsintent);
             return true;
         }
+        if(id==R.id.action_map)
+        {
+            abremapa();
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void abremapa() {
+        SharedPreferences opt= PreferenceManager.getDefaultSharedPreferences(this);
+        String local= opt.getString(getString(R.string.pref_location_key), "Belo Horizonte,br");
+        Uri geolocation= Uri.parse("geo:0,0?").buildUpon()
+                .appendQueryParameter("q",local).build();
+        Intent intentmapa= new Intent(Intent.ACTION_VIEW);
+        intentmapa.setData(geolocation);
+        if(intentmapa.resolveActivity(getPackageManager())!= null)
+        {
+            startActivity(intentmapa);
+        }else{
+            Log.v(LOG_TAG, "Erro pra abrir mapa");
+        }
     }
 
 }

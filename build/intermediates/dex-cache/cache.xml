@@ -2,32 +2,32 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\caio\Downloads\android\teste\Sunshine-Version-2\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="d1bf02de1c56d942e7a9d093b8610ba1ef4128e3">
-        <dex dex="C:\Users\caio\Downloads\android\teste\Sunshine-Version-2\app\build\intermediates\pre-dexed\debug\classes-6990056da9e36269eeb39a0b7e19a606c773427d.jar" />
-    </item>
-    <item
-        jar="E:\sdk2\extras\android\m2repository\com\android\support\support-annotations\21.0.2\support-annotations-21.0.2.jar"
+        jar="D:\android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.2\support-annotations-21.0.2.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6">
-        <dex dex="C:\Users\caio\Downloads\android\teste\Sunshine-Version-2\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.2-d862027d68e11537db375eb05d6f3b1d95763684.jar" />
+        <dex dex="C:\Users\caio-note\Downloads\android\Sunshine-Version-2-master\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.2-73cf82fc3c336981d423065e9896c51d00ecc246.jar" />
     </item>
     <item
-        jar="C:\Users\caio\Downloads\android\teste\Sunshine-Version-2\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.2\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="7ae2d38807a43b2f2185ff4089a92c790b579e54">
-        <dex dex="C:\Users\caio\Downloads\android\teste\Sunshine-Version-2\app\build\intermediates\pre-dexed\debug\classes-2695547256467f771ae663b4e88f3eea514fd1c8.jar" />
-    </item>
-    <item
-        jar="C:\Users\caio\Downloads\android\teste\Sunshine-Version-2\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\libs\internal_impl-21.0.2.jar"
+        jar="C:\Users\caio-note\Downloads\android\Sunshine-Version-2-master\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\jars\libs\internal_impl-21.0.2.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="962e8b12569c56dbdcf8367eb4eac8bb129cd18f">
-        <dex dex="C:\Users\caio\Downloads\android\teste\Sunshine-Version-2\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-3d8cea150be0afea27e30f97b5535b29c85e9c6c.jar" />
+        <dex dex="C:\Users\caio-note\Downloads\android\Sunshine-Version-2-master\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-9ba69c1fb9ff5d6afbce86bf5efafd5fd2f7b00c.jar" />
+    </item>
+    <item
+        jar="C:\Users\caio-note\Downloads\android\Sunshine-Version-2-master\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.2\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7ae2d38807a43b2f2185ff4089a92c790b579e54">
+        <dex dex="C:\Users\caio-note\Downloads\android\Sunshine-Version-2-master\app\build\intermediates\pre-dexed\debug\classes-7a80e3e28cf20374b8f362a9d5649566e341afa3.jar" />
+    </item>
+    <item
+        jar="C:\Users\caio-note\Downloads\android\Sunshine-Version-2-master\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d1bf02de1c56d942e7a9d093b8610ba1ef4128e3">
+        <dex dex="C:\Users\caio-note\Downloads\android\Sunshine-Version-2-master\app\build\intermediates\pre-dexed\debug\classes-b0d3732f0f1942f61bc0a8b45872d95872e611e7.jar" />
     </item>
 
 </items>
